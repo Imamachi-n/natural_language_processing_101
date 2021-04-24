@@ -1,0 +1,2 @@
+# natural_language_processing_101
+機械学習・深層学習による自然言語処理入門の写経用リポジトリ
