@@ -8,8 +8,14 @@ scikit-learn = "*"
 tensorflow = "*"
 h5py = "*"
 requests = "*"
+janome = "*"
+mecab-python3 = "*"
 
 [dev-packages]
+jupyterlab = "*"
+
+[scripts]
+jlab = "jupyter-lab"
 
 [requires]
 python_version = "3.8.5"
