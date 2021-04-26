@@ -4,7 +4,7 @@
 
 ## Get started
 
-`Pipfile.lock` を使ってインストールされ，環境を再現します。
+以下のコマンドを実行することで、`Pipfile.lock` を使ってインストールして環境を再現します。
 
 ```zsh
 pipenv sync --dev    # 開発用パッケージもインストール
@@ -19,7 +19,7 @@ Mac の場合、以下の通り Mecab をインストール
 $ brew install mecab
 $ brew install mecab-ipadic
 
-# シェルを再起動して、イントールチェック
+# シェルを再起動して、インストールチェック
 $ exec $SHELL -l
 $ mecab --version
 mecab of 0.996
