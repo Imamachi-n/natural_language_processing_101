@@ -55,6 +55,18 @@ $ mecab --version
 mecab of 0.996
 ```
 
+### [参考] VSCode で pyenv のパッケージパスを通す
+
+pyenv を使っていると、VSCode でのパッケージのインポートのエラーになる。  
+`.vscode/settings.json` にパッケージのパスと python のパスを記述後、VSCode をリロード。
+
+```json
+{
+  "python.venvPath": "/Users/<username>/.local/share/virtualenvs/<project_name>",
+  "python.pythonPath": "/Users/<username>/.local/share/virtualenvs/<project_name>/bin/python"
+}
+```
+
 ## Jupyter-lab の起動
 
 以下のコマンドを実行して、Juptyer-lab を起動する。

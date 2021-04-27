@@ -1,3 +1,5 @@
 {
-    "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "python.venvPath": "/Users/imamachi/.local/share/virtualenvs/natural_language_processing_101-Pq9xRgPA",
+  "python.pythonPath": "/Users/imamachi/.local/share/virtualenvs/natural_language_processing_101-Pq9xRgPA/bin/python"
 }

@@ -16,6 +16,7 @@ jupyterlab = "*"
 
 [scripts]
 jlab = "jupyter-lab"
+ch4 = "python src/ch4.py"
 
 [requires]
 python_version = "3.8.5"
