@@ -4,13 +4,43 @@
 
 ## Get started
 
+### Python のインストール
+
+```zsh
+brew install pyenv
+
+# 設定ファイルに pyenv の初期化処理を入れて、コンソールをリロード
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+exec $SHELL -l
+```
+
+### Python の特定バージョンの設定
+
+```zsh
+# バージョンリストを出して、最新のバージョンを探す
+pyenv install -l
+
+# anaconda-3 をインストールして、global の python として指定
+# MEMO: anaconda3-2020.11 は一例
+pyenv install anaconda3-2020.11
+pyenv global anaconda3-2020.11
+```
+
+### pyenv のインストール
+
+```zsh
+brew install pipenv
+```
+
+### 必要なパッケージのインストール
+
 以下のコマンドを実行することで、`Pipfile.lock` を使ってインストールして環境を再現します。
 
 ```zsh
 pipenv sync --dev    # 開発用パッケージもインストール
 ```
 
-## Mecab - 形態素解析エンジンのインストール
+### Mecab - 形態素解析エンジンのインストール
 
 Mac の場合、以下の通り Mecab をインストール
 
