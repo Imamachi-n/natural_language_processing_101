@@ -42,7 +42,13 @@ pipenv sync --dev    # 開発用パッケージもインストール
 
 ### Mecab - 形態素解析エンジンのインストール
 
-Mac の場合、以下の通り Mecab をインストール
+Mac の場合、以下の通り Mecab をインストール(`pipenv sync` をやっていれば、やらなくても OK)
+
+```zsh
+pipenv install mecab-python3
+```
+
+※ `mecab-python3` パッケージ内に MeCab が含まれているため、以下のインストールはいらないはず（ただし、ディクショナリは入っていないので別途インストールが必要）
 
 ```zsh
 # Mecab / IPA の辞書のインストール
