@@ -48,7 +48,7 @@ Mac の場合、以下の通り Mecab をインストール(`pipenv sync` をや
 pipenv install mecab-python3
 ```
 
-※ `mecab-python3` パッケージ内に MeCab が含まれているため、以下のインストールはいらないはず（ただし、ディクショナリは入っていないので別途インストールが必要）
+※ `mecab-python3` パッケージ内に MeCab が含まれているため、以下のインストールはいらないかも？（ただし、ディクショナリは入っていないので別途インストールが必要）
 
 ```zsh
 # Mecab / IPA の辞書のインストール
@@ -60,6 +60,35 @@ $ exec $SHELL -l
 $ mecab --version
 mecab of 0.996
 ```
+
+#### mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加
+
+以下のコマンドから、NEologd をインストールする。
+
+```zsh
+git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
+cd mecab-ipadic-neologd
+sudo bin/install-mecab-ipadic-neologd -n
+```
+
+mecab で NEologd の辞書のパスを指定する必要があるため、以下のコマンドでパスをチェック。
+
+```zsh
+echo `mecab-config --dicdir`"/mecab-ipadic-neologd"
+```
+
+デフォルトだと、`/usr/local/lib/mecab/dic/mecab-ipadic-neologd` に保存される模様。
+
+python で使用する場合は、以下のように辞書を指定する。
+
+```python
+import MeCab
+tagger = MeCab.Tagger('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
+```
+
+詳しくは、こちらの README を参照のこと。
+
+- [mecab-ipadic-NEologd : Neologism dictionary for MeCab](https://github.com/neologd/mecab-ipadic-neologd/blob/master/README.ja.md)
 
 ### [参考] VSCode で pyenv のパッケージパスを通す
 
