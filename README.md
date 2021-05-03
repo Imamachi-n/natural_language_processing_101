@@ -2,6 +2,21 @@
 
 機械学習・深層学習による自然言語処理入門の写経用リポジトリ
 
+<!-- TOC -->
+
+- [natural_language_processing_101](#natural_language_processing_101)
+  - [Get started](#get-started)
+    - [Python のインストール](#python-のインストール)
+    - [Python の特定バージョンの設定](#python-の特定バージョンの設定)
+    - [pyenv のインストール](#pyenv-のインストール)
+    - [必要なパッケージのインストール](#必要なパッケージのインストール)
+    - [Mecab - 形態素解析エンジンのインストール](#mecab---形態素解析エンジンのインストール)
+      - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-上の言語資源から得た新語の追加)
+    - [[参考] VSCode で pyenv のパッケージパスを通す](#参考-vscode-で-pyenv-のパッケージパスを通す)
+  - [Jupyter-lab の起動](#jupyter-lab-の起動)
+
+<!-- /TOC -->
+
 ## Get started
 
 ### Python のインストール
