@@ -5,23 +5,25 @@
 <!-- TOC -->
 
 - [natural_language_processing_101](#natural_language_processing_101)
-  - [Get started](#get-started)
-    - [Python のインストール](#python-のインストール)
-    - [Python の特定バージョンの設定](#python-の特定バージョンの設定)
-    - [pyenv のインストール](#pyenv-のインストール)
-    - [必要なパッケージのインストール](#必要なパッケージのインストール)
-    - [新しいパッケージの追加](#新しいパッケージの追加)
-    - [Mecab - 形態素解析エンジンのインストール](#mecab---形態素解析エンジンのインストール)
-      - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-上の言語資源から得た新語の追加)
-    - [[参考] VSCode で pyenv のパッケージパスを通す](#参考-vscode-で-pyenv-のパッケージパスを通す)
-  - [Jupyter-lab のセットアップ](#jupyter-lab-のセットアップ)
-    - [Jupyter-lab の起動](#jupyter-lab-の起動)
-    - [Jupyter-lab にモジュールのパスを追加する](#jupyter-lab-にモジュールのパスを追加する)
-  - [参考文献](#参考文献)
+  - [環境構築 python のセットアップ](#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89-python-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
+    - [Python のインストール](#python-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+      - [Python の特定バージョンの設定](#python-%E3%81%AE%E7%89%B9%E5%AE%9A%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%AE%E8%A8%AD%E5%AE%9A)
+    - [pipenv のインストール](#pipenv-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+      - [必要なパッケージのインストール](#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+      - [新しいパッケージの追加](#%E6%96%B0%E3%81%97%E3%81%84%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E8%BF%BD%E5%8A%A0)
+  - [Mecab - 形態素解析エンジンのインストール](#mecab---%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+    - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-%E4%B8%8A%E3%81%AE%E8%A8%80%E8%AA%9E%E8%B3%87%E6%BA%90%E3%81%8B%E3%82%89%E5%BE%97%E3%81%9F%E6%96%B0%E8%AA%9E%E3%81%AE%E8%BF%BD%E5%8A%A0)
+  - [VSCode のセットアップ](#vscode-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
+    - [VSCode で pyenv のパッケージパスを通す](#vscode-%E3%81%A7-pyenv-%E3%81%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%91%E3%82%B9%E3%82%92%E9%80%9A%E3%81%99)
+    - [オススメの VSCode 拡張機能をインストール](#%E3%82%AA%E3%82%B9%E3%82%B9%E3%83%A1%E3%81%AE-vscode-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+  - [Jupyter-lab のセットアップ](#jupyter-lab-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
+    - [Jupyter-lab の起動](#jupyter-lab-%E3%81%AE%E8%B5%B7%E5%8B%95)
+    - [Jupyter-lab にモジュールのパスを追加する](#jupyter-lab-%E3%81%AB%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%91%E3%82%B9%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B)
+  - [参考文献](#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE)
 
 <!-- /TOC -->
 
-## Get started
+## 環境構築 (python のセットアップ)
 
 ### Python のインストール
 
@@ -33,7 +35,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 exec $SHELL -l
 ```
 
-### Python の特定バージョンの設定
+#### Python の特定バージョンの設定
 
 ```zsh
 # バージョンリストを出して、最新のバージョンを探す
@@ -45,13 +47,16 @@ pyenv install anaconda3-2020.11
 pyenv global anaconda3-2020.11
 ```
 
-### pyenv のインストール
+### pipenv のインストール
+
+このプロジェクトでは、`pipenv` というパッケージ管理ツールを使っています。  
+Mac では以下のコマンドで `pipenv` をインストールします。
 
 ```zsh
 brew install pipenv
 ```
 
-### 必要なパッケージのインストール
+#### 必要なパッケージのインストール
 
 以下のコマンドを実行することで、`Pipfile.lock` を使ってインストールして環境を再現します。
 
@@ -59,7 +64,7 @@ brew install pipenv
 pipenv sync --dev    # 開発用パッケージもインストール
 ```
 
-### 新しいパッケージの追加
+#### 新しいパッケージの追加
 
 以下のコマンドを実行することで、プロジェクトの python 環境に特定のパッケージをインストール & 追加できます。
 
@@ -67,7 +72,7 @@ pipenv sync --dev    # 開発用パッケージもインストール
 pipenv install <package_name>
 ```
 
-### Mecab - 形態素解析エンジンのインストール
+## Mecab - 形態素解析エンジンのインストール
 
 Mac の場合、以下の通り Mecab をインストール(`pipenv sync` をやっていれば、やらなくても OK)
 
@@ -88,7 +93,7 @@ $ mecab --version
 mecab of 0.996
 ```
 
-#### mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加
+### mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加
 
 以下のコマンドから、NEologd をインストールする。
 
@@ -117,7 +122,11 @@ tagger = MeCab.Tagger('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
 
 - [mecab-ipadic-NEologd : Neologism dictionary for MeCab](https://github.com/neologd/mecab-ipadic-neologd/blob/master/README.ja.md)
 
-### [参考] VSCode で pyenv のパッケージパスを通す
+## VSCode のセットアップ
+
+VSCode を使っている場合、以下の設定を行う必要があります。
+
+### VSCode で pyenv のパッケージパスを通す
 
 pyenv を使っていると、VSCode でのパッケージのインポートのエラーになる。  
 `.vscode/settings.json` にパッケージのパスと python のパスを記述後、VSCode をリロード。
@@ -128,6 +137,11 @@ pyenv を使っていると、VSCode でのパッケージのインポートの�
   "python.pythonPath": "/Users/<username>/.local/share/virtualenvs/<project_name>/bin/python"
 }
 ```
+
+### オススメの VSCode 拡張機能をインストール
+
+`.vscode/extensions.json` におすすめの拡張機能をリストアップしてあるので、必要に応じてインストールする。  
+（全てのオススメ拡張機能をインストールするかどうか、ポップアップで最初に聞かれるはず）
 
 ## Jupyter-lab のセットアップ
 
@@ -166,4 +180,4 @@ from packages import preprocess
 
 ## 参考文献
 
--[【Python】形態素解析エンジン MeCab の使い方](https://hibiki-press.tech/python/mecab/5153)
+- [【Python】形態素解析エンジン MeCab の使い方](https://hibiki-press.tech/python/mecab/5153)
