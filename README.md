@@ -10,10 +10,12 @@
     - [Python の特定バージョンの設定](#python-の特定バージョンの設定)
     - [pyenv のインストール](#pyenv-のインストール)
     - [必要なパッケージのインストール](#必要なパッケージのインストール)
+    - [新しいパッケージの追加](#新しいパッケージの追加)
     - [Mecab - 形態素解析エンジンのインストール](#mecab---形態素解析エンジンのインストール)
       - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-上の言語資源から得た新語の追加)
     - [[参考] VSCode で pyenv のパッケージパスを通す](#参考-vscode-で-pyenv-のパッケージパスを通す)
   - [Jupyter-lab の起動](#jupyter-lab-の起動)
+  - [参考文献](#参考文献)
 
 <!-- /TOC -->
 
@@ -53,6 +55,14 @@ brew install pipenv
 
 ```zsh
 pipenv sync --dev    # 開発用パッケージもインストール
+```
+
+### 新しいパッケージの追加
+
+以下のコマンドを実行することで、プロジェクトの python 環境に特定のパッケージをインストール & 追加できます。
+
+```zsh
+pipenv install <package_name>
 ```
 
 ### Mecab - 形態素解析エンジンのインストール
@@ -124,3 +134,7 @@ pyenv を使っていると、VSCode でのパッケージのインポートの�
 ```zsh
 pipenv run jlab
 ```
+
+## 参考文献
+
+-[【Python】形態素解析エンジン MeCab の使い方](https://hibiki-press.tech/python/mecab/5153)
