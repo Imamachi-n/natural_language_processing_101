@@ -1,5 +1,5 @@
 import MeCab
-from lib import preprocess
+from packages import preprocess
 
 # 形態素解析
 wakati = MeCab.Tagger("-Owakati")
