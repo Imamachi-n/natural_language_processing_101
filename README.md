@@ -14,7 +14,9 @@
     - [Mecab - 形態素解析エンジンのインストール](#mecab---形態素解析エンジンのインストール)
       - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-上の言語資源から得た新語の追加)
     - [[参考] VSCode で pyenv のパッケージパスを通す](#参考-vscode-で-pyenv-のパッケージパスを通す)
-  - [Jupyter-lab の起動](#jupyter-lab-の起動)
+  - [Jupyter-lab のセットアップ](#jupyter-lab-のセットアップ)
+    - [Jupyter-lab の起動](#jupyter-lab-の起動)
+    - [Jupyter-lab にモジュールのパスを追加する](#jupyter-lab-にモジュールのパスを追加する)
   - [参考文献](#参考文献)
 
 <!-- /TOC -->
@@ -127,12 +129,39 @@ pyenv を使っていると、VSCode でのパッケージのインポートの�
 }
 ```
 
-## Jupyter-lab の起動
+## Jupyter-lab のセットアップ
+
+### Jupyter-lab の起動
 
 以下のコマンドを実行して、Juptyer-lab を起動する。
 
 ```zsh
 pipenv run jlab
+```
+
+### Jupyter-lab にモジュールのパスを追加する
+
+以下のディレクトリ構成の場合で、`notebooks` ディレクトリに格納されている Jupyter Notebook から、
+`packages` 内のモジュールにアクセスしたいケースを想定する。
+
+```text
+/
+├── src/                # ソースコードのルートパス
+     ├── notebooks/     # Jupyter Notebook のディレクトリ
+     ├── packages/      # 各種パッケージ群
+```
+
+上記の構成の場合、以下の通りに `src` ディレクトリにパスを通す。
+
+```python
+import pathlib
+sys.path.append(str(pathlib.Path.cwd().parent))
+```
+
+`src` ディレクトリが Jupyter lab のモジュールパスが通っているので、`src` 起点でモジュールを読み込むことができる。
+
+```python
+from packages import preprocess
 ```
 
 ## 参考文献
