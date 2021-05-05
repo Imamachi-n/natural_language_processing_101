@@ -4,8 +4,10 @@
   "python.linting.pylintEnabled": false,
   "python.linting.lintOnSave": true,
   "python.formatting.provider": "autopep8",
-  "python.formatting.autopep8Path": "pipenv run format",
   "editor.formatOnSave": true,
-  "python.venvPath": "/Users/imamachi/.local/share/virtualenvs/natural_language_processing_101-Pq9xRgPA",
-  "python.pythonPath": "/Users/imamachi/.local/share/virtualenvs/natural_language_processing_101-Pq9xRgPA/bin/python"
+  "python.venvPath": "${workspaceFolder}/.venv",
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/.venv/Lib/site-packages"
+  ],
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
 }

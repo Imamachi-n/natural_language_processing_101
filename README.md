@@ -11,10 +11,11 @@
     - [pipenv のインストール](#pipenv-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
       - [必要なパッケージのインストール](#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
       - [新しいパッケージの追加](#%E6%96%B0%E3%81%97%E3%81%84%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E8%BF%BD%E5%8A%A0)
+      - [パッケージ群の削除](#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%BE%A4%E3%81%AE%E5%89%8A%E9%99%A4)
   - [Mecab - 形態素解析エンジンのインストール](#mecab---%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
     - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-%E4%B8%8A%E3%81%AE%E8%A8%80%E8%AA%9E%E8%B3%87%E6%BA%90%E3%81%8B%E3%82%89%E5%BE%97%E3%81%9F%E6%96%B0%E8%AA%9E%E3%81%AE%E8%BF%BD%E5%8A%A0)
   - [VSCode のセットアップ](#vscode-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
-    - [VSCode で pyenv のパッケージパスを通す](#vscode-%E3%81%A7-pyenv-%E3%81%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%91%E3%82%B9%E3%82%92%E9%80%9A%E3%81%99)
+    - [VSCode で pyenv の各種パスを通す](#vscode-%E3%81%A7-pyenv-%E3%81%AE%E5%90%84%E7%A8%AE%E3%83%91%E3%82%B9%E3%82%92%E9%80%9A%E3%81%99)
     - [オススメの VSCode 拡張機能をインストール](#%E3%82%AA%E3%82%B9%E3%82%B9%E3%83%A1%E3%81%AE-vscode-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
   - [Jupyter-lab のセットアップ](#jupyter-lab-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
     - [Jupyter-lab の起動](#jupyter-lab-%E3%81%AE%E8%B5%B7%E5%8B%95)
@@ -58,10 +59,12 @@ brew install pipenv
 
 #### 必要なパッケージのインストール
 
-以下のコマンドを実行することで、`Pipfile.lock` を使ってインストールして環境を再現します。
+以下のコマンドを実行することで、`Pipfile.lock` を使って環境を再現することができます。  
+また、`PIPENV_VENV_IN_PROJECT=1` という環境変数を指定することで、
+プロジェクトルート直下の `.venv` ディレクトリにパッケージを保存することができます。
 
 ```zsh
-pipenv sync --dev    # 開発用パッケージもインストール
+PIPENV_VENV_IN_PROJECT=1 pipenv sync --dev    # 開発用パッケージもインストール
 ```
 
 #### 新しいパッケージの追加
@@ -76,6 +79,14 @@ pipenv install <package_name>
 
 ```zsh
 pipenv install --dev <package_name>
+```
+
+#### パッケージ群の削除
+
+仮想環境のパッケージ群を削除するには、以下のコマンドを実行する。
+
+```zsh
+pipenv --rm
 ```
 
 ## Mecab - 形態素解析エンジンのインストール
@@ -132,15 +143,18 @@ tagger = MeCab.Tagger('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
 
 VSCode を使っている場合、以下の設定を行う必要があります。
 
-### VSCode で pyenv のパッケージパスを通す
+### VSCode で pyenv の各種パスを通す
 
 pyenv を使っていると、VSCode でのパッケージのインポートのエラーになる。  
 `.vscode/settings.json` にパッケージのパスと python のパスを記述後、VSCode をリロード。
 
 ```json
 {
-  "python.venvPath": "/Users/<username>/.local/share/virtualenvs/<project_name>",
-  "python.pythonPath": "/Users/<username>/.local/share/virtualenvs/<project_name>/bin/python"
+  "python.venvPath": "${workspaceFolder}/.venv",
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/.venv/Lib/site-packages"
+  ],
+  "python.pythonPath": "${workspaceFolder}/.venv/bin/python"
 }
 ```
 
@@ -188,3 +202,6 @@ from packages import preprocess
 
 - [【Python】形態素解析エンジン MeCab の使い方](https://hibiki-press.tech/python/mecab/5153)
 - [VSCode の Python 開発環境で pylint の代わりに flake8 を導入し自動整形を設定する](https://qiita.com/psychoroid/items/2c2acc06c900d2c0c8cb)
+- [Windows + Python + PipEnv + Visual Studio Code で Python 開発環境](https://qiita.com/youkidkk/items/b674e6ace96eb227cc28)
+- [Pipenv で仮想環境をプロジェクトディレクトリ配下に作る方法](https://dev.classmethod.jp/articles/pipenv-venv-setting/)
+- [Pipenv で flake8 / autopep8 を上手く使う](https://qiita.com/ciloholic/items/9de9391f8457dc9bc60c)
