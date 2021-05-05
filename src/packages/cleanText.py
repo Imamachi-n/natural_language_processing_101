@@ -12,3 +12,4 @@ def clean_text(text):
     # URLの除去
     replaced_text = re.sub(r'https?:\/\/.*?[\r\n ]', '', replaced_text)
     replaced_text = re.sub(r'　', ' ', replaced_text)  # 全角空白の除去
+    return replaced_text

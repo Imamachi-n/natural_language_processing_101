@@ -1,4 +1,5 @@
 import MeCab
+
 from packages import preprocess
 
 # 形態素解析

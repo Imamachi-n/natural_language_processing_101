@@ -17,6 +17,8 @@ jupyterlab = "*"
 flake8 = "*"
 autopep8 = "*"
 flake8-import-order = "*"
+mypy = "*"
+isort = "*"
 
 [scripts]
 lint = "flake8 --show-source ."

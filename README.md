@@ -16,6 +16,9 @@
     - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-%E4%B8%8A%E3%81%AE%E8%A8%80%E8%AA%9E%E8%B3%87%E6%BA%90%E3%81%8B%E3%82%89%E5%BE%97%E3%81%9F%E6%96%B0%E8%AA%9E%E3%81%AE%E8%BF%BD%E5%8A%A0)
   - [VSCode のセットアップ](#vscode-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
     - [VSCode で pyenv の各種パスを通す](#vscode-%E3%81%A7-pyenv-%E3%81%AE%E5%90%84%E7%A8%AE%E3%83%91%E3%82%B9%E3%82%92%E9%80%9A%E3%81%99)
+    - [VSCode に autopep8 を 導入してオートフォーマットできるようにする](#vscode-%E3%81%AB-autopep8-%E3%82%92-%E5%B0%8E%E5%85%A5%E3%81%97%E3%81%A6%E3%82%AA%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B)
+    - [mypy を使って VSCode 上で型を静的解析する](#mypy-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6-vscode-%E4%B8%8A%E3%81%A7%E5%9E%8B%E3%82%92%E9%9D%99%E7%9A%84%E8%A7%A3%E6%9E%90%E3%81%99%E3%82%8B)
+    - [isort を使ってパッケージの並び順を揃える](#isort-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E4%B8%A6%E3%81%B3%E9%A0%86%E3%82%92%E6%8F%83%E3%81%88%E3%82%8B)
     - [オススメの VSCode 拡張機能をインストール](#%E3%82%AA%E3%82%B9%E3%82%B9%E3%83%A1%E3%81%AE-vscode-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
   - [Jupyter-lab のセットアップ](#jupyter-lab-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
     - [Jupyter-lab の起動](#jupyter-lab-%E3%81%AE%E8%B5%B7%E5%8B%95)
@@ -158,6 +161,56 @@ pyenv を使っていると、VSCode でのパッケージのインポートの�
 }
 ```
 
+### VSCode に autopep8 を 導入してオートフォーマットできるようにする
+
+`flake8` と `autopep8` に関連するパッケージをインストールします。
+
+```zsh
+pipenv install --dev flake8 flake8-import-order autopep8
+```
+
+デフォルトの formatter が Prettier などになっていると、フォーマットエラーになります。
+`.vscode/settings.json` に python の場合のデフォルトの formatter を設定する必要があります。
+その上で、`autopep8` の設定などを追加します。
+
+```json
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.lintOnSave": true,
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Path": "${workspaceFolder}/.venv/bin/autopep8"
+}
+```
+
+### mypy を使って VSCode 上で型を静的解析する
+
+`mypy` をまずインストールします。
+
+```zsh
+pipenv install --dev mypy
+```
+
+VSCode の設定ファイル `.vscode/settings.json` に以下の設定を追加します。
+
+```json
+{
+  "python.linting.mypyEnabled": true
+}
+```
+
+### isort を使ってパッケージの並び順を揃える
+
+`isort` をインストールします。
+
+```zsh
+pipenv install --dev isort
+```
+
 ### オススメの VSCode 拡張機能をインストール
 
 `.vscode/extensions.json` におすすめの拡張機能をリストアップしてあるので、必要に応じてインストールする。  
@@ -207,3 +260,4 @@ from packages import preprocess
 - [Pipenv で flake8 / autopep8 を上手く使う](https://qiita.com/ciloholic/items/9de9391f8457dc9bc60c)
 - [Python のコードを快適に書くための設定をまとめてみる](https://k2ss.info/archives/2976/)
 - [How to correctly set formatter for python when formatter for other language enabled?](https://github.com/microsoft/vscode-docs/issues/3728)
+- [python の開発環境を構築する](https://www.marsa-blog.com/2019/06/developpython1.html#p2-4)
