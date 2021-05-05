@@ -205,3 +205,5 @@ from packages import preprocess
 - [Windows + Python + PipEnv + Visual Studio Code で Python 開発環境](https://qiita.com/youkidkk/items/b674e6ace96eb227cc28)
 - [Pipenv で仮想環境をプロジェクトディレクトリ配下に作る方法](https://dev.classmethod.jp/articles/pipenv-venv-setting/)
 - [Pipenv で flake8 / autopep8 を上手く使う](https://qiita.com/ciloholic/items/9de9391f8457dc9bc60c)
+- [Python のコードを快適に書くための設定をまとめてみる](https://k2ss.info/archives/2976/)
+- [How to correctly set formatter for python when formatter for other language enabled?](https://github.com/microsoft/vscode-docs/issues/3728)
