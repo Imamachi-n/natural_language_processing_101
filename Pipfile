@@ -23,6 +23,7 @@ isort = "*"
 [scripts]
 lint = "flake8 --show-source ."
 format = "autopep8 -ivr ."
+test = "python -m unittest discover src/tests -v"
 jlab = "jupyter-lab"
 ch4 = "python src/ch4.py"
 

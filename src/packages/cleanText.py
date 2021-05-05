@@ -2,9 +2,9 @@ import re
 
 
 def clean_text(text):
-    # 空文字以外をリスト化 & 両端の空白を除く
-    replaced_text_list = [str.strip() for str in text if str != ""]
-    replaced_text = '\n'.join(replaced_text_list)  # 改行文字を除く(リストの連結)
+    # 改行コードをあわせる & 両端の空白を除く
+    replaced_text = '\n'.join(str.strip()
+                              for str in text.splitlines() if str != "")
     replaced_text = re.sub(r'[【】]', ' ', replaced_text)       # 【】の除去
     replaced_text = re.sub(r'[（）()]', ' ', replaced_text)     # （）の除去
     replaced_text = re.sub(r'[［］\[\]]', ' ', replaced_text)   # ［］の除去
