@@ -72,6 +72,12 @@ pipenv sync --dev    # 開発用パッケージもインストール
 pipenv install <package_name>
 ```
 
+開発向けのパッケージをインストールする場合は、`--dev` オプションをつける。
+
+```zsh
+pipenv install --dev <package_name>
+```
+
 ## Mecab - 形態素解析エンジンのインストール
 
 Mac の場合、以下の通り Mecab をインストール(`pipenv sync` をやっていれば、やらなくても OK)
@@ -181,3 +187,4 @@ from packages import preprocess
 ## 参考文献
 
 - [【Python】形態素解析エンジン MeCab の使い方](https://hibiki-press.tech/python/mecab/5153)
+- [VSCode の Python 開発環境で pylint の代わりに flake8 を導入し自動整形を設定する](https://qiita.com/psychoroid/items/2c2acc06c900d2c0c8cb)

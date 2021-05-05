@@ -14,8 +14,13 @@ jaconv = "*"
 
 [dev-packages]
 jupyterlab = "*"
+flake8 = "*"
+autopep8 = "*"
+flake8-import-order = "*"
 
 [scripts]
+lint = "flake8 --show-source ."
+format = "autopep8 -ivr ."
 jlab = "jupyter-lab"
 ch4 = "python src/ch4.py"
 
