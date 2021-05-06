@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "94b7bef8a3d8db01a7221a925b49b2ec20352048bc0a029cae433335f6614c45"
+            "sha256": "f67603344a0ec86ca0d3852d2041a61a80c736c31e1aca5a85c97dac44afb2f3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -185,14 +185,6 @@
             ],
             "index": "pypi",
             "version": "==0.3"
-        },
-        "janome": {
-            "hashes": [
-                "sha256:6c2c38d894014d57cb3151265c11146506ead3b3bc290898adc33711711612de",
-                "sha256:a650e2684e80af72f869eff17566f31dd4444f5443c4771dca1ada60cea5c251"
-            ],
-            "index": "pypi",
-            "version": "==0.4.1"
         },
         "joblib": {
             "hashes": [
