@@ -10,6 +10,7 @@ h5py = "*"
 requests = "*"
 mecab-python3 = "*"
 jaconv = "*"
+nltk = "*"
 
 [dev-packages]
 jupyterlab = "*"
