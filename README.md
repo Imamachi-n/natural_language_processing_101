@@ -12,6 +12,8 @@
       - [必要なパッケージのインストール](#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
       - [新しいパッケージの追加](#%E6%96%B0%E3%81%97%E3%81%84%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E8%BF%BD%E5%8A%A0)
       - [パッケージ群の削除](#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%BE%A4%E3%81%AE%E5%89%8A%E9%99%A4)
+      - [トラブルシューティング - 依存解決できない](#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0---%E4%BE%9D%E5%AD%98%E8%A7%A3%E6%B1%BA%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84)
+      - [トラブルシューティング - Big Sur 固有のトラブル](#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0---big-sur-%E5%9B%BA%E6%9C%89%E3%81%AE%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB)
   - [Mecab - 形態素解析エンジンのインストール](#mecab---%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
     - [mecab-ipadic-NEologd - Web 上の言語資源から得た新語の追加](#mecab-ipadic-neologd---web-%E4%B8%8A%E3%81%AE%E8%A8%80%E8%AA%9E%E8%B3%87%E6%BA%90%E3%81%8B%E3%82%89%E5%BE%97%E3%81%9F%E6%96%B0%E8%AA%9E%E3%81%AE%E8%BF%BD%E5%8A%A0)
   - [VSCode のセットアップ](#vscode-%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
@@ -52,6 +54,10 @@ pyenv install -l
 # MEMO: anaconda3-2020.11 は一例
 pyenv install anaconda3-2020.11
 pyenv global anaconda3-2020.11
+
+# 別の例
+pyenv install 3.9.4
+pyenv global 3.9.4
 ```
 
 ### pipenv のインストール
@@ -61,6 +67,7 @@ Mac では以下のコマンドで `pipenv` をインストールします。
 
 ```zsh
 brew install pipenv
+PIPENV_VENV_IN_PROJECT=1 pipenv --python 3.9.4
 ```
 
 #### 必要なパッケージのインストール
@@ -94,6 +101,33 @@ pipenv install --dev <package_name>
 ```zsh
 pipenv --rm
 ```
+
+#### トラブルシューティング - 依存解決できない
+
+例えば、`ERROR: Could not find a version that matches keras-nightly~=2.5.0.dev` のようなエラーが出ている場合、`pre-release` のパッケージに依存していることが原因で依存解決ができないらしい。
+
+なので、以下の方法で `pre-release` のパッケージをインストールできるようにする。
+
+```zsh
+# いったん、lock ファイルを削除
+pipenv lock --clear
+
+# pre-release に依存している場合、以下のコマンドで問題なくインストールできるはず
+pipenv lock --pre
+```
+
+#### トラブルシューティング - Big Sur 固有のトラブル
+
+例えば、MacOS で Big Sur を使っている状況で、`ERROR: Could not find a version that matches tensorflow` のようなエラーが出た場合、以下の環境変数を設定した後、`pipenv install` をする。
+
+コンパチブルモード（Big Sur（11 系）であっても OS のバージョンを 10 系列として振る舞う）でコマンドを実行できる。
+
+```zsh
+export SYSTEM_VERSION_COMPAT=1
+pipenv install
+```
+
+参考 Issue は[こちら](https://github.com/pypa/pipenv/issues/4578)。
 
 ## Mecab - 形態素解析エンジンのインストール
 
