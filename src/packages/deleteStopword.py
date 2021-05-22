@@ -28,4 +28,17 @@ def download_jp_stopwords(path=""):
 
     with open(path, "r", encoding="utf-8") as file:
         stopwords = [w.strip() for w in file.readlines()]
-        return set(stopwords)
+        return list(set(stopwords))
+
+
+def delete_stopwords(words, stopwords):
+    """ストップワードの除去
+
+    Args:
+        words (str): ワードのリスト
+        stopwords (set): ストップワードのセット
+
+    Returns:
+        str[]: ストップワードを除去したワードリスト
+    """
+    return [w for w in words if w not in stopwords]
