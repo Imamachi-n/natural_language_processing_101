@@ -29,6 +29,8 @@
   - [単体テスト](#%E5%8D%98%E4%BD%93%E3%83%86%E3%82%B9%E3%83%88)
     - [コマンドでの実行方法](#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E5%AE%9F%E8%A1%8C%E6%96%B9%E6%B3%95)
     - [単体テストの書き方](#%E5%8D%98%E4%BD%93%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9)
+  - [自然言語処理のメモ](#%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86%E3%81%AE%E3%83%A1%E3%83%A2)
+    - [こちらへ](#%E3%81%93%E3%81%A1%E3%82%89%E3%81%B8)
   - [参考文献](#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE)
 
 <!-- /TOC -->
@@ -332,6 +334,10 @@ python -m unittest discover src/tests -p '*_test.py' -v
 - [Python 標準の unittest の使い方メモ](https://qiita.com/aomidro/items/3e3449fde924893f18ca)
 - [Python 3 標準の unittest でテストを書く際のディレクトリ構成](https://qiita.com/hoto17296/items/fa0166728177e676cd36)
 - [unittest --- ユニットテストフレームワーク](https://docs.python.org/ja/3/library/unittest.html)
+
+## 自然言語処理のメモ
+
+### [こちらへ](./docs/README.md)
 
 ## 参考文献
 
