@@ -4,7 +4,6 @@ from src.packages import cleanText
 
 
 class TestCleanText(unittest.TestCase):
-
     def test_clean_text_1(self):
         actual = cleanText.clean_text(" てすと\r\nテスト　")
         self.assertEqual("てすと\nテスト", actual)

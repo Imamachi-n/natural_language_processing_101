@@ -1,6 +1,9 @@
 import re
 import unicodedata
+
 import nltk
+
+# nltk.download() # インストール用
 from nltk.corpus import wordnet
 
 
@@ -28,7 +31,7 @@ def normalize_number(text):
     Returns:
         [string]: 数字を 0 に置換したテキスト(桁数がいくつあっても 0 に強制置換)
     """
-    return re.sub(r'\d+', '0', text)
+    return re.sub(r"\d+", "0", text)
 
 
 def normalize_exact_number(text):
@@ -40,10 +43,10 @@ def normalize_exact_number(text):
     Returns:
         [string]: 数字を 0 に置換したテキスト(桁数は維持）
     """
-    return re.sub(r'\d', '0', text)
+    return re.sub(r"\d", "0", text)
 
 
-def normalize_unicode(text, form='NFKC'):
+def normalize_unicode(text, form="NFKC"):
     """UNICODE の正規化
 
     Args:

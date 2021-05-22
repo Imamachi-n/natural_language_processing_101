@@ -20,9 +20,11 @@ autopep8 = "*"
 flake8-import-order = "*"
 mypy = "*"
 isort = "*"
+black = "*"
 
 [scripts]
-lint = "flake8 --show-source ."
+lintFlake8 = "flake8 --show-source ."
+lint = "black ."
 format = "autopep8 -ivr ."
 test = "python -m unittest discover src/tests -p '*_test.py' -v"
 jlab = "jupyter-lab"

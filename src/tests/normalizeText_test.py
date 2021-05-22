@@ -4,7 +4,6 @@ from src.packages import normalizeText
 
 
 class TestCleanText(unittest.TestCase):
-
     def test_nomalize_number(self):
         actual = normalizeText.normalize_number("1000円札を拾った")
         self.assertEqual("0円札を拾った", actual)
@@ -16,3 +15,7 @@ class TestCleanText(unittest.TestCase):
     def test_normalize_unicode(self):
         actual = normalizeText.normalize_unicode("１1①アｱ")
         self.assertEqual("111アア", actual)
+
+    # def test_lemmatize_term(self):
+    #     actual = normalizeText.lemmatize_term("this is a pen")
+    #     self.assertEqual(".", actual)
