@@ -1,30 +1,28 @@
-import os
-import urllib.parse
-import urllib.request
+from src.utils import constants
+from src.utils import file_operation
 
 
-def download_jp_stopwords(path=""):
+def download_jp_stopwords():
     """日本語のストップワードをダウンロードし、ストップワードのセットを取得
-
-    Args:
-        path (str, optional): 日本語のストップワードのファイルパス. Defaults to "".
 
     Returns:
         [set]: ストップワードのパス
     """
-    if not path:
-        data_dir = urllib.parse.urljoin(
-            os.path.dirname(os.path.abspath(__file__)), "data"
-        )
-        path = data_dir + "/" + "jp_stopwords.txt"
-    print(path)
-    url = "http://svn.sourceforge.jp/svnroot/slothlib/CSharp/Version1/SlothLib/NLP/Filter/StopWord/word/Japanese.txt"
-    if os.path.exists(path):
-        print("File already exists.")
-    else:
-        print("Downloading...")
-        # url からファイルをダウンロードし、指定したパスにファイルを保存する
-        urllib.request.urlretrieve(url, path)
+    path = constants.SLOTHLAB_STOPWORD_FILEPATH
+    url = constants.SLOTHLAB_STOPWORD_URL
+    file_operation.download_file(url, path)
+    return path
+
+
+def download_wiki_jp_data():
+    """TEXT8 のファイルダウンロード
+
+    Returns:
+        str: ファイルパス
+    """
+    path = constants.TEXT8_STOPWORD_FILEPATH
+    url = constants.TEXT8_URL
+    file_operation.download_file(url, path)
     return path
 
 

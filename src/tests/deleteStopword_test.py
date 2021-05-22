@@ -16,3 +16,6 @@ class TestDeleteStopword(unittest.TestCase):
             ["りんご", "を", "いくつ", "か", "買う", "。"], stopword_list
         )
         self.assertEqual(["りんご", "を", "か", "買う", "。"], actual)
+
+    def test_download_wiki_jp_data(self):
+        deleteStopword.download_wiki_jp_data()
